@@ -2,7 +2,7 @@ package HomeWork.M303;
 
 import java.util.Scanner;
 
-public class PA_303_3_1 {
+public class PA303_3_1 {
     public static void main(String[] args) {
         //1.Given two strings of lowercase English letters,A  and B, perform the
         // following operations: Sum the lengths of A  and B.

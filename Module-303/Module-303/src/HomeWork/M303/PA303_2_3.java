@@ -1,6 +1,6 @@
 package HomeWork.M303;
 
-public class PA_303_2_3 {
+public class PA303_2_3 {
     public static void main (String [] args) {
         //1.Write a program that declares an integer a variable x, assigns the value 2
         // to it, and prints out the binary string version of the

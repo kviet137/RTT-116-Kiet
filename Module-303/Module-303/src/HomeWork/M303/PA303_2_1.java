@@ -1,6 +1,6 @@
 package HomeWork.M303;
 
-public class PA_303_2_1 {
+public class PA303_2_1 {
     public static void main (String [] args){
 
         //1.Write a program that declares two integer variables, assigns an integer
