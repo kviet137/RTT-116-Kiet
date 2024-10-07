@@ -1,4 +1,4 @@
-package HomeWork.M303_2;
+package HomeWork.M303;
 
 import java.util.Scanner;
 

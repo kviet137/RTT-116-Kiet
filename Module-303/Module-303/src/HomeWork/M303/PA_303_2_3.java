@@ -1,4 +1,4 @@
-package HomeWork.M303_2;
+package HomeWork.M303;
 
 public class PA_303_2_3 {
     public static void main (String [] args) {
