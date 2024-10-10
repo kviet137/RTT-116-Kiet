@@ -1,4 +1,4 @@
-package ClassWork;
+package ClassWork.M303_5;
 
 public class ForLoopsExamples {
     public static void main(String[] args) {

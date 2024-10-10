@@ -15,7 +15,6 @@ public class CoffeeShop {
 
     // this will hold the products that we are going to purchase
     private List<Product> cart = new ArrayList<>();
-    private List<Product> uniqueCart = new ArrayList<>();
     int quantity;
 
     private void initProducts() {
@@ -157,6 +156,7 @@ public class CoffeeShop {
                 // purchase product / add to cart
                 addProductToCart();
             }else if (selection == 3) {
+                System.out.println("not yet implemented");
                //view cart
             }
             else if (selection == 4) {

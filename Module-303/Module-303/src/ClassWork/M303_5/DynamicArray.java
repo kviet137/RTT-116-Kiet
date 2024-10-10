@@ -1,4 +1,4 @@
-package ClassWork;
+package ClassWork.M303_5;
 
 public class DynamicArray {
     public static double[] insert(double[] array, int position, double value){
