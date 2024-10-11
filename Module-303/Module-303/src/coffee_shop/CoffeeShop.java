@@ -15,7 +15,7 @@ public class CoffeeShop {
 
     // this will hold the products that we are going to purchase
     private List<Product> cart = new ArrayList<>();
-    int quantity;
+
 
     private void initProducts() {
         Product p1 = new Product("Small Coffee", 4.57, 0);
@@ -46,9 +46,9 @@ public class CoffeeShop {
     private int printMainMenu() {
         System.out.println("1) See product menu");
         System.out.println("2) Purchase product");
-        System.out.println("3) View Cart");
-        System.out.println("4) Checkout");
-        System.out.println("5) Exit");
+        //System.out.println("3) View Cart");
+        System.out.println("3) Checkout");
+        System.out.println("4) Exit");
 
         System.out.print("\nEnter Selection :");
 
@@ -77,17 +77,16 @@ public class CoffeeShop {
         // we want to check that the user has entered a valid product number
         if (selection >= 1 && selection <= products.size()) {
             System.out.print("How many would you like to add?:");
-            quantity = scanner.nextInt();
+            int quantity = scanner.nextInt();
             scanner.nextLine();
 
             Product p = products.get(selection - 1);
-            if (quantity >=1){
+            if (quantity >=0) {
+                quantity = p.getQuantity() + quantity;
                 p.setQuantity(quantity);
             }
-            else if (quantity == 0){
-                p.setQuantity(quantity);
-                System.out.println("You are removing " + p.getName() + " from cart");
-            }else{
+
+            else{
                 System.out.println("Please enter a valid quantity");
             }
 
@@ -120,7 +119,7 @@ public class CoffeeShop {
       double subtotal = 0.0;
         for (Product item : cart) {
             System.out.println(item.getName() + "\tx" + item.getQuantity() + " \t $" + item.getPrice());
-            subtotal = subtotal + item.getPrice();
+            subtotal = subtotal + item.getPrice() * item.getQuantity();
         }
 
 
@@ -131,12 +130,12 @@ public class CoffeeShop {
         // assume there is a 9% sales tax to be applied to the order
         // calculate tax
         double tax = subtotal * 0.09;
-        System.out.println("Tax\t\t\t\t $" + tax);
+        System.out.printf("Tax\t\t\t\t $%.2f%n", tax);
 
         // calculate total amount
         // adding an addtional () will cause it to do the math
         double total = (subtotal + tax);
-        System.out.println("Total\t\t\t $" + total + "\n");
+        System.out.printf("Total\t\t\t $%.2f%n\n", total);
     }
 
     public void start() {
@@ -154,15 +153,15 @@ public class CoffeeShop {
                 printProductMenu();
             } else if (selection == 2) {
                 // purchase product / add to cart
-                addProductToCart();
-            }else if (selection == 3) {
-                System.out.println("not yet implemented");
-               //view cart
-            }
-            else if (selection == 4) {
+                addProductToCart();}
+//            else if (selection == 3) {
+//                System.out.println("not yet implemented");
+//               //view cart
+//            }
+            else if (selection == 3) {
                 // checkout
                 checkout();
-            } else if (selection == 5) {
+            } else if (selection == 4) {
                 System.out.println("Good bye");
 
                 // we are exiting with a value of 0 means successful exit

@@ -1,62 +1,27 @@
 package HomeWork.M303_9;
 
-
-
 public class GLAB303_9_2 {
-
-    public void main(String[] args) {
-        HumanBeing h1 = new HumanBeing();
-        // using setters of HumanBeing
-        h1.setHeight(1.65f);
-        h1.setWeight(68);
-        h1.setBmi(calculateBmi(h1));
-
-        // using getters of HumanBeing
-        System.out.println("Person has "+h1.getWeight()+" kgs and is "+h1.getHeight()+" meters in height, which results in BMI of "+h1.getBmi());
+    public class Doctor {
     }
 
-    public static float calculateBmi(HumanBeing h1){
-        return h1.getWeight()/(h1.getHeight()*h1.getHeight());
+    String DoctorName;
+    String Department;
 
+    public void Doctor_Details() {
+        System.out.println("Doctor Details");
+    }
 
-
-
-}
-    public class HumanBeing {
-
-        private float weight;
-        private float height;
-        private float bmi;
-
-        public HumanBeing(float weight, float height, float bmi )
-        {
-            this.weight = weight;
-            this.height = height;
-            this.bmi = bmi;
-        }
-        public HumanBeing()
-        {
-
-        }
-        public float getWeight() {
-            return weight;
-        }
-        public void setWeight(float weight) {
-            this.weight = weight;
-        }
-        public float getHeight() {
-            return height;
-        }
-        public void setHeight(float height) {
-            this.height = height;
-        }
-        public float getBmi() {
-            return bmi;
-        }
-        public void setBmi(float bmi) {
-            this.bmi = bmi;
+    public class Hospital {
+        public void main(String[] args) {
+            Surgeon s = new Surgeon();
+            s.Surgeon_Details();
         }
     }
 
-
+    public class Surgeon extends Doctor {
+        void Surgeon_Details() {
+            System.out.println("Surgeon Details....");
+            System.out.println(Department = "cardio");
+        }
+    }
 }
