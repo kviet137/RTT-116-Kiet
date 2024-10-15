@@ -61,8 +61,17 @@ public class CoffeeShop {
 
         // 2 prompt the user to enter an item # to buy
         System.out.print("Enter product number:");
-        int selection = scanner.nextInt();
-        scanner.nextLine();
+        int selection;
+
+        //check if the users enter a valid inputs
+        try {
+            selection = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println("Invalid selection " + e.getMessage());
+            return;
+        } finally {
+            scanner.nextLine();
+        }
 
 
 
@@ -70,6 +79,7 @@ public class CoffeeShop {
         if (selection >= 1 && selection <= products.size()) {
             System.out.print("How many would you like to add?:");
             int quantity;
+            //check if the users enter a valid inputs of the amount
             try {
                 quantity = scanner.nextInt();
             } catch (Exception e) {
@@ -97,13 +107,14 @@ public class CoffeeShop {
     }
 
     public void checkout() {
+        //!!!!!!!!!!!!!!!!!!!!need to empty the cart and reset the quantity for all products!!!!!!!!!!!!!!!!
         System.out.println("==== Items in your cart ====");
 
         // list the items in the cart
         double subtotal = 0.0;
         for (Product item : cart) {
             System.out.println(item.getName() + "\tx" + item.getQuantity() + " \t $" + item.getPrice());
-            subtotal = subtotal + item.getPrice() * item.getQuantity();
+            subtotal = subtotal + (item.getPrice() * item.getQuantity());
         }
         System.out.println("");
         System.out.println("Subtotal\t\t $" + subtotal);
