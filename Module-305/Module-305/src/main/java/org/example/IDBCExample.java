@@ -1,15 +1,13 @@
 package org.example;
 
 import java.sql.*;
-import java.util.Scanner;
 
 public class IDBCExample {
     public static void main(String[] args) throws ClassNotFoundException {
-        Scanner sc = new Scanner(System.in);
+
         String dburl = "jdbc:mysql://localhost:3306/classic_models";
         String user = "root";
-        System.out.println("Enter your Database PASSWORD: ");
-        String password = sc.nextLine();
+        String password = "k123456";
         System.out.println("-------- MySQL JDBC Connection Demo ------------");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

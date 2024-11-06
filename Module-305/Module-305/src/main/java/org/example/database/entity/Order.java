@@ -31,7 +31,7 @@ public class Order {
     private Date requiredDate;
     @Column(name = "shipped_date", columnDefinition = "DATE")
     @Temporal(TemporalType.DATE)
-    private Date ShippedDate;
+    private Date shippedDate;
     @Column(name = "status")
     private String status;
     @Column(name = "comments", columnDefinition = "TEXT")
