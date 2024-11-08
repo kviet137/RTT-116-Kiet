@@ -5,26 +5,40 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "offices")
 public class Office {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @Column(name = "city")
     private String city;
+
     @Column(name = "phone")
     private String phone;
+
     @Column(name = "address_line1")
     private String addressLine1;
+
     @Column(name = "address_line2")
     private String addressLine2;
+
     @Column(name = "state")
     private String state;
+
     @Column(name = "country")
     private String country;
+
     @Column(name = "postal_code")
     private String postalCode;
+
     @Column(name = "territory")
     private String territory;
+
+
+    public Office() {
+
+    }
 
     public Office(int id, String city, String phone, String addressLine1, String addressLine2, String state, String country, String postalCode, String territory) {
         this.id = id;
@@ -38,16 +52,12 @@ public class Office {
         this.territory = territory;
     }
 
-    public Office() {
-
+    public int getId() {
+        return id;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCity() {
@@ -56,14 +66,6 @@ public class Office {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getPhone() {
@@ -96,6 +98,14 @@ public class Office {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getPostalCode() {

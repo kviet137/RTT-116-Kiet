@@ -3,6 +3,7 @@ package org.example.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Entity
 @Table(name = "products")
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class Product {
     @Column(name = "product_name")
     private String productName;
     @Column(name = "productline_id")
-    private int productLineId;
+    private int productlineId;
     @Column(name = "product_scale")
     private String productScale;
     @Column(name = "product_vendor")
@@ -33,6 +34,6 @@ public class Product {
     @Column(name = "buy_price", columnDefinition = "DECIMAL")
     private double buyPrice;
     @Column(name = "msrp", columnDefinition = "DECIMAL")
-    private int msrp;
+    private double msrp;
 
 }

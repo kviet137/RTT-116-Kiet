@@ -1,26 +1,35 @@
 package org.example.database.entity;
 
 import jakarta.persistence.*;
+import lombok.ToString;
+
+import java.util.List;
+
 
 @Entity
-@Table(name ="employees")
+@Table(name = "employees")
 public class Employee {
+
     // the @Id annotation tells hibernate that this is the primary key for this entity
     @Id
-    // this tells hibernate that the datebase will auto increment the new Id for a new record in the database
+    // this tells hibernate that the database will auto increment the new Id for a new record in the database
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // this defines the database column
     @Column(name = "id")
     private int id;
 
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Customer> customers;
+
     @Column(name = "office_id")
-    private int officeID;
+    private int officeId;
 
     @Column(name = "lastname")
-    private String lastName;
+    private String lastname;
 
     @Column(name = "firstname")
-    private String firstName;
+    private String firstname;
 
     @Column(name = "extension")
     private String extension;
@@ -41,21 +50,21 @@ public class Employee {
     private String profileImageUrl;
 
 
-    public Employee(int id, int officeID, String lastName, String firstName, String extension, String email, int reportsTo, String jobTitle, int vacationHours, String profileImageUrl) {
+    public Employee() {
+
+    }
+
+    public Employee(int id, int officeId, String lastname, String firstname, String extension, String email, int reportsTo, String jobTitle, int vacationHours, String profileImageUrl) {
         this.id = id;
-        this.officeID = officeID;
-        this.lastName = lastName;
-        this.firstName = firstName;
+        this.officeId = officeId;
+        this.lastname = lastname;
+        this.firstname = firstname;
         this.extension = extension;
         this.email = email;
         this.reportsTo = reportsTo;
         this.jobTitle = jobTitle;
         this.vacationHours = vacationHours;
         this.profileImageUrl = profileImageUrl;
-    }
-
-    public Employee() {
-
     }
 
     public int getId() {
@@ -66,28 +75,28 @@ public class Employee {
         this.id = id;
     }
 
-    public int getOfficeID() {
-        return officeID;
+    public int getOfficeId() {
+        return officeId;
     }
 
-    public void setOfficeID(int officeID) {
-        this.officeID = officeID;
+    public void setOfficeId(int officeId) {
+        this.officeId = officeId;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getExtension() {
@@ -138,13 +147,21 @@ public class Employee {
         this.profileImageUrl = profileImageUrl;
     }
 
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", officeID=" + officeID +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
+                ", officeId=" + officeId +
+                ", lastname='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
                 ", extension='" + extension + '\'' +
                 ", email='" + email + '\'' +
                 ", reportsTo=" + reportsTo +
