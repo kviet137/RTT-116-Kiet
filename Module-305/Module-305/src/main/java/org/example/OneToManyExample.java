@@ -40,7 +40,7 @@ public class OneToManyExample {
         // when this run .. hibernate runs an actual query
         Employee e = employeeDAO.findById(1501);
 
-        System.out.println(e);
+        System.out.println("find by id" + e);
 
         // I am asking the database for the list of customers for this employee
         for (Customer c : e.getCustomers() ) {

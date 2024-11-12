@@ -1,13 +1,19 @@
 package org.example.database.entity;
 
 import jakarta.persistence.*;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 
 @Entity
 @Table(name = "employees")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+
 public class Employee {
 
     // the @Id annotation tells hibernate that this is the primary key for this entity
@@ -49,10 +55,6 @@ public class Employee {
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 
-
-    public Employee() {
-
-    }
 
     public Employee(int id, int officeId, String lastname, String firstname, String extension, String email, int reportsTo, String jobTitle, int vacationHours, String profileImageUrl) {
         this.id = id;
@@ -153,21 +155,5 @@ public class Employee {
 
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", officeId=" + officeId +
-                ", lastname='" + lastname + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", extension='" + extension + '\'' +
-                ", email='" + email + '\'' +
-                ", reportsTo=" + reportsTo +
-                ", jobTitle='" + jobTitle + '\'' +
-                ", vacationHours=" + vacationHours +
-                ", profileImageUrl='" + profileImageUrl + '\'' +
-                '}';
     }
 }

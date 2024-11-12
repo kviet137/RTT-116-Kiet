@@ -6,6 +6,8 @@ import org.example.database.entity.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+//import org.hibernate.query.Order;
+import org.example.database.entity.Order; //<---same as query.order above for some reason
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,6 @@ public class ProductDAO {
 
     // at the class member level make your session factory ... for all DAO
     private SessionFactory factory = new Configuration().configure().buildSessionFactory();
-
     public void update(Product product) {
         // for hibernate to do an update, it needs the product to already exist in the database otherwise its an error
         Session session = factory.openSession();
@@ -134,4 +135,24 @@ public class ProductDAO {
         // I want to see all products that are in an order
         return null;
     }
+
+    // Todo HW # 3 For any existing order add a new product to that order
+    //  with a quantity ordered of 100.    This you can do using the product DAO only.
+    //  Create a new order details with the correct information and set the order and
+    //  the product on the order details add the order details to the list of orderdetails
+    //   on the product and save the product.Do not forget to set both the product and
+    //   the order on the new orderdetails obect before saving it. Look at the
+    //   class example from today in how I added a custoemr to the emoloyee as a road map.
+
+    public void addNewProductToExistingOrder(Product product) {
+        OrderDAO order = new OrderDAO();
+        Order o = order.findById(10111);
+        System.out.println(o);
+
+
+
+
+    }
+
+
 }

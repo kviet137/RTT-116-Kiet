@@ -18,19 +18,31 @@ public class OrderDetail {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "order_id")
-    private int orderId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
+    @ToString.Exclude
+    private Order order;
 
-    @Column(name = "product_id")
-    private int productId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
+    @ToString.Exclude
+    private Product product;
+
+
+
+    @Column(name = "order_id",insertable=false, updatable=false)
+    private Integer orderId;
+
+    @Column(name = "product_id",insertable=false, updatable=false)
+    private Integer productId;
 
     @Column(name = "quantity_ordered")
-    private int quantityOrdered;
+    private Integer quantityOrdered;
 
     @Column(name = "price_each", columnDefinition = "DECIMAL")
-    private double priceEach;
+    private Double priceEach;
 
     @Column(name = "order_line_number", columnDefinition = "SMALLINT")
-    private int orderLineNumber;
+    private Integer orderLineNumber;
 
 }

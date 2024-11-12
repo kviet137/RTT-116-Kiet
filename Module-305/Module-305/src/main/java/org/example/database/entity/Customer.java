@@ -3,6 +3,8 @@ package org.example.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "customers")
 @AllArgsConstructor
@@ -21,6 +23,10 @@ public class Customer {
     @JoinColumn(name = "sales_rep_employee_id", nullable = false)
     @ToString.Exclude
     private Employee employee;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Order> orders;
 
     @Column(name = "sales_rep_employee_id",insertable=false, updatable=false)
     private Integer salesRepEmployeeId;

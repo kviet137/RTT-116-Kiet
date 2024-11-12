@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -19,8 +20,18 @@ public class Order {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "customer_id")
-    private int customerId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    @ToString.Exclude
+    private Customer customer;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<OrderDetail> orderDetails;
+
+    @Column(name = "customer_id",insertable=false, updatable=false)
+    private Integer customerId;
+
 
     @Column(name = "order_date", columnDefinition = "DATE")
     private Date orderDate;
