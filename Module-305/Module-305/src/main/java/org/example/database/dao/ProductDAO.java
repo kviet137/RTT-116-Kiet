@@ -2,6 +2,7 @@ package org.example.database.dao;
 
 import jakarta.persistence.TypedQuery;
 import org.example.database.entity.Customer;
+import org.example.database.entity.OrderDetail;
 import org.example.database.entity.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -136,13 +137,22 @@ public class ProductDAO {
         return null;
     }
 
-    // Todo HW # 3 For any existing order add a new product to that order
-    //  with a quantity ordered of 100.    This you can do using the product DAO only.
-    //  Create a new order details with the correct information and set the order and
-    //  the product on the order details add the order details to the list of orderdetails
-    //   on the product and save the product.Do not forget to set both the product and
-    //   the order on the new orderdetails obect before saving it. Look at the
-    //   class example from today in how I added a custoemr to the emoloyee as a road map.
+    public List<OrderDetail> findOrderDetailByProductId(Integer productId) {
+        Session session = factory.openSession();
+        String hql = "Select od from OrderDetail od where od.productId = :productId ";
+
+        TypedQuery<OrderDetail> query = session.createQuery(hql, OrderDetail.class);
+        query.setParameter("productId", productId);
+        try{
+            List<OrderDetail> orderDetails = query.getResultList();
+            return orderDetails;
+
+        }catch (Exception e) {
+            return new ArrayList<>();
+        }finally {
+            session.close();
+        }
+    }
 
     public void addNewProductToExistingOrder(Product product) {
         OrderDAO order = new OrderDAO();

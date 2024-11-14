@@ -9,7 +9,7 @@ public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "city")
     private String city;
@@ -40,7 +40,7 @@ public class Office {
 
     }
 
-    public Office(int id, String city, String phone, String addressLine1, String addressLine2, String state, String country, String postalCode, String territory) {
+    public Office(Integer id, String city, String phone, String addressLine1, String addressLine2, String state, String country, String postalCode, String territory) {
         this.id = id;
         this.city = city;
         this.phone = phone;
@@ -52,11 +52,11 @@ public class Office {
         this.territory = territory;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

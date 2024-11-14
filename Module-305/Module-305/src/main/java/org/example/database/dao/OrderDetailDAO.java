@@ -126,7 +126,24 @@ public class OrderDetailDAO {
             session.close();
         }
     }
+    public OrderDetail findByOrderIdAndProductId(int orderId, int productId) {
+        Session session = factory.openSession();
 
+        String hql = "SELECT od from OrderDetail od where od.orderId = :orderId and od.productId = :productId";
+
+        TypedQuery<OrderDetail> query = session.createQuery(hql, OrderDetail.class);
+        query.setParameter("orderId", orderId);
+        query.setParameter("productId", productId);
+
+        try{
+            OrderDetail orderDetail = query.getSingleResult();
+            return orderDetail;
+        }catch(Exception e) {
+            return null;
+        }finally {
+            session.close();
+        }
+    }
 //    public List<Product> findByOrderId(int orderId) {
 //        // I want to see all products that are in an order
 //        return null;

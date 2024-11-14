@@ -18,7 +18,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
@@ -31,7 +31,6 @@ public class Order {
 
     @Column(name = "customer_id",insertable=false, updatable=false)
     private Integer customerId;
-
 
     @Column(name = "order_date", columnDefinition = "DATE")
     private Date orderDate;

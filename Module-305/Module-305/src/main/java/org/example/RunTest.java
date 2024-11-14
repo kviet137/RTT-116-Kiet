@@ -31,16 +31,12 @@ public class RunTest {
             //   class example from today in how I added a custoemr to the emoloyee as a road map.
 
 
-            int orderID = 10111;
-
             //Order o = new OrderDAO().findById(orderID);   //<----this shorten the code below
-
-
+            ProductDAO pDAO = new ProductDAO();
+            OrderDAO orderDAO = new OrderDAO();
             OrderDetailDAO odDAO = new OrderDetailDAO();
 
-            ProductDAO pDAO = new ProductDAO();
 
-            OrderDAO orderDAO = new OrderDAO();
             Order o = orderDAO.findById(10111);
 
 
@@ -50,34 +46,31 @@ public class RunTest {
                 OrderDetail newOrderDetail = new OrderDetail();
                 Product newProduct = new Product();
 
-                newProduct.setProductCode("999");
-                newProduct.setProductName("Nine");
+                newProduct.setProductCode("666");
+                newProduct.setProductName("6");
                 newProduct.setProductlineId(7);
-                newProduct.setProductScale("Nine Pound");
-                newProduct.setProductVendor("Nine Vendor");
-                newProduct.setProductDescription("Product 9");
+                newProduct.setProductScale("6 Pound");
+                newProduct.setProductVendor("6 Vendor");
+                newProduct.setProductDescription("Product 6");
                 newProduct.setQuantityInStock(newProduct.getQuantityInStock() + 100);
-                newProduct.setBuyPrice(99);
-                newProduct.setMsrp(.99);
+                newProduct.setBuyPrice(66);
+                newProduct.setMsrp(.66);
 
                 pDAO.create(newProduct);
-                newOrderDetail.setProduct(newProduct);
-
-
                 pDAO.update(newProduct);
 
+                System.out.println(newProduct);
 
                 try {
                     newOrderDetail.setQuantityOrdered(100);
-                    newOrderDetail.setPriceEach(99.99);
-                    newOrderDetail.setOrderLineNumber(9);
+                    newOrderDetail.setPriceEach(66.66);
+                    newOrderDetail.setOrderLineNumber(6);
 
-
-                    //orderDAO.create(newOrderDetail.getOrder());
+                    newOrderDetail.setProduct(newProduct);
                     newOrderDetail.setOrder(o);
                     o.getOrderDetails().add(newOrderDetail);
 
-
+                    System.out.println(newOrderDetail);
                     System.out.println("succeed");
 
                 } catch (Exception e) {
@@ -89,12 +82,7 @@ public class RunTest {
                     odDAO.update(newOrderDetail);
                 }
 
-
             }
             ;
-
-
-
         }
     }
-

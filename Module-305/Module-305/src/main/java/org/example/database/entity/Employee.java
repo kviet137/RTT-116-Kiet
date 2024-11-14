@@ -22,14 +22,14 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // this defines the database column
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Customer> customers;
 
     @Column(name = "office_id")
-    private int officeId;
+    private Integer officeId;
 
     @Column(name = "lastname")
     private String lastname;
@@ -44,19 +44,19 @@ public class Employee {
     private String email;
 
     @Column(name = "reports_to")
-    private int reportsTo;
+    private Integer reportsTo;
 
     @Column(name = "job_title")
     private String jobTitle;
 
     @Column(name = "vacation_hours")
-    private int vacationHours;
+    private Integer vacationHours;
 
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 
 
-    public Employee(int id, int officeId, String lastname, String firstname, String extension, String email, int reportsTo, String jobTitle, int vacationHours, String profileImageUrl) {
+    public Employee(Integer id, Integer officeId, String lastname, String firstname, String extension, String email, Integer reportsTo, String jobTitle, Integer vacationHours, String profileImageUrl) {
         this.id = id;
         this.officeId = officeId;
         this.lastname = lastname;
@@ -69,19 +69,19 @@ public class Employee {
         this.profileImageUrl = profileImageUrl;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getOfficeId() {
+    public Integer getOfficeId() {
         return officeId;
     }
 
-    public void setOfficeId(int officeId) {
+    public void setOfficeId(Integer officeId) {
         this.officeId = officeId;
     }
 
@@ -117,11 +117,11 @@ public class Employee {
         this.email = email;
     }
 
-    public int getReportsTo() {
+    public Integer getReportsTo() {
         return reportsTo;
     }
 
-    public void setReportsTo(int reportsTo) {
+    public void setReportsTo(Integer reportsTo) {
         this.reportsTo = reportsTo;
     }
 
@@ -133,11 +133,11 @@ public class Employee {
         this.jobTitle = jobTitle;
     }
 
-    public int getVacationHours() {
+    public Integer getVacationHours() {
         return vacationHours;
     }
 
-    public void setVacationHours(int vacationHours) {
+    public void setVacationHours(Integer vacationHours) {
         this.vacationHours = vacationHours;
     }
 
