@@ -4,6 +4,8 @@ import org.example.database.entity.Customer;
 import org.example.database.entity.Employee;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class CustomerDAOTest {
 
@@ -62,5 +64,23 @@ public class CustomerDAOTest {
         Assertions.assertEquals(employee.getId(), actualCustomer.getEmployee().getId());
 
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "103, Atelier graphique",
+            "112, Signal Gift Stores",
+            "114, 'Australian Collectors, Co.'" //<<<<----- need single quote if the name has a comma in itself
+    })
+    public void findByIdTest(int customerId, String customerName) {
+        // this is not a very good test .. just doing it to show how this works
+        // given
+        // when
+        Customer actual = customerDAO.findCustomerById(customerId);
+
+        // then
+        Assertions.assertEquals(customerName, actual.getCustomerName());
+    }
+
+
 
 }

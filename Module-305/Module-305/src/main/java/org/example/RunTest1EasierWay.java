@@ -7,7 +7,7 @@ import org.example.database.entity.Order;
 import org.example.database.entity.OrderDetail;
 import org.example.database.entity.Product;
 
-public class RunTestEasierWay {
+public class RunTest1EasierWay {
 
     public static void main ( String[] args) {
         ProductDAO productDAO = new ProductDAO();

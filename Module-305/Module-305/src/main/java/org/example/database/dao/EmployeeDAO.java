@@ -80,4 +80,25 @@ public class EmployeeDAO {
             session.close();
         }
     }
+
+    public List<Employee> findByFirstName(String name) {
+        Session session = factory.openSession();
+
+        String hqlName = "SELECT e FROM Employee e WHERE e.firstname = :cName";
+
+        TypedQuery<Employee> query = session.createQuery(hqlName, Employee.class);
+        query.setParameter("cName", name);
+
+        try{
+            List<Employee> resultNameList = query.getResultList();
+            return resultNameList;
+
+        }catch(Exception e) {
+            return new ArrayList<>();
+
+        }finally {
+            session.close();
+        }
+
+    }
 }
