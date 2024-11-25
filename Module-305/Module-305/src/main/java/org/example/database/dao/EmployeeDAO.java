@@ -23,7 +23,7 @@ public class EmployeeDAO {
         session.close();
     }
 
-    public void create(Employee employee) {
+    public Employee create(Employee employee) {
         // for hibernate
         // update: the product has already existed to work without error
         Session session = factory.openSession();
@@ -31,6 +31,8 @@ public class EmployeeDAO {
         session.persist(employee);
         session.getTransaction().commit();
         session.close();
+
+        return employee;
     }
 
     public void deleteByProduct(Employee employee) {
@@ -65,8 +67,9 @@ public class EmployeeDAO {
     }
 
     public Employee findById(int employeeId) {
-        String hqlQuery = "SELECT e FROM Employee e WHERE id = :employeeId";
         Session session = factory.openSession();
+        String hqlQuery = "SELECT e FROM Employee e WHERE id = :employeeId";
+
 
         TypedQuery<Employee> query = session.createQuery(hqlQuery, Employee.class);
         query.setParameter("employeeId", employeeId);

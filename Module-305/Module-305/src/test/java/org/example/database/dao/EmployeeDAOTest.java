@@ -10,6 +10,8 @@ public class EmployeeDAOTest {
 
     private EmployeeDAO employeeDAO = new EmployeeDAO();
 
+    Employee createdEmployee;
+
 
 //    @TestInstance(TestInstance.Lifecycle.PER_CLASS)    <----needed for hw on 11/15/2024
 //    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -40,10 +42,13 @@ public class EmployeeDAOTest {
 
     }
 
+
+
     @Test
     public void createEmployeeTest() { // <<---- need to change the RETURN TYPE in createEmployee for it to RETURN THE EMPLOYEE OBJECT in the employeeDAO
         Employee newEmployee = new Employee();
 
+        System.out.println("before create:" + newEmployee);
         newEmployee.setOfficeId(2);
         newEmployee.setLastname("2LastName");
         newEmployee.setFirstname("2FirstName");
@@ -53,42 +58,73 @@ public class EmployeeDAOTest {
         newEmployee.setJobTitle("2JobTitle");
         newEmployee.setVacationHours(2);
         newEmployee.setProfileImageUrl("2ProfileImageUrl");
-        employeeDAO.create(newEmployee);
-        employeeDAO.update(newEmployee);
+        createdEmployee = employeeDAO.create(newEmployee);
+        employeeDAO.update(createdEmployee);
 
-        Assertions.assertNotNull(newEmployee);
+        System.out.println("after create:" + newEmployee);
 
-        System.out.println("create:" + newEmployee.getId());
-        
+        Assertions.assertNotNull(createdEmployee);
+
+        System.out.println("???:" + createdEmployee.getId());
+        System.out.println("before update:" + newEmployee);
+
+        createdEmployee.setOfficeId(3);
+        createdEmployee.setLastname("3LastName");
+        createdEmployee.setFirstname("3FirstName");
+        createdEmployee.setExtension("3Extension");
+        createdEmployee.setEmail("3Email");
+        createdEmployee.setReportsTo(3);
+        createdEmployee.setJobTitle("3JobTitle");
+        createdEmployee.setVacationHours(3);
+        createdEmployee.setProfileImageUrl("3ProfileImageUrl");
+        employeeDAO.update(createdEmployee);
+
+        System.out.println("after update:" + newEmployee);
+
+        Assertions.assertNotNull(createdEmployee);
+        Assertions.assertEquals(3, createdEmployee.getVacationHours());
+        Assertions.assertEquals("3LastName", createdEmployee.getLastname());
+        Assertions.assertEquals("3FirstName", createdEmployee.getFirstname());
+        Assertions.assertEquals("3Extension", createdEmployee.getExtension());
+        Assertions.assertEquals("3Email", createdEmployee.getEmail());
+        Assertions.assertEquals("3ProfileImageUrl", createdEmployee.getProfileImageUrl());
+
+
+        System.out.println("before delete:" + createdEmployee);
+        employeeDAO.deleteById(createdEmployee.getId());
+        Assertions.assertNull(employeeDAO.findById(createdEmployee.getId()));
+        System.out.println("after delete:" + createdEmployee); // this object still exists in java but the datas it created gets deleted in the DATABASE
+        System.out.println("after delete and find the id INSIDE the DATABASE" + employeeDAO.findById(createdEmployee.getId()));
     }
 
     @Test
     public void updateTest() {
         Employee newEmployee = new Employee();
 
-        System.out.println("update :" +newEmployee.getId());
+
+        System.out.println("update :" +createdEmployee.getId());
 
         Employee updateEmployee = employeeDAO.findById(newEmployee.getId());
 
-        updateEmployee.setOfficeId(3);
-        updateEmployee.setLastname("3LastName");
-        updateEmployee.setFirstname("3FirstName");
-        updateEmployee.setExtension("3Extension");
-        updateEmployee.setEmail("3Email");
-        updateEmployee.setReportsTo(3);
-        updateEmployee.setJobTitle("3JobTitle");
-        updateEmployee.setVacationHours(3);
-        updateEmployee.setProfileImageUrl("3ProfileImageUrl");
-        employeeDAO.update(updateEmployee);
+        createdEmployee.setOfficeId(3);
+        createdEmployee.setLastname("3LastName");
+        createdEmployee.setFirstname("3FirstName");
+        createdEmployee.setExtension("3Extension");
+        createdEmployee.setEmail("3Email");
+        createdEmployee.setReportsTo(3);
+        createdEmployee.setJobTitle("3JobTitle");
+        createdEmployee.setVacationHours(3);
+        createdEmployee.setProfileImageUrl("3ProfileImageUrl");
+        employeeDAO.update(createdEmployee);
 
 
-        Assertions.assertNotNull(updateEmployee);
-        Assertions.assertEquals(3, updateEmployee.getVacationHours());
-        Assertions.assertEquals("3LastName", updateEmployee.getLastname());
-        Assertions.assertEquals("3FirstName", updateEmployee.getFirstname());
-        Assertions.assertEquals("3Extension", updateEmployee.getExtension());
-        Assertions.assertEquals("3Email", updateEmployee.getEmail());
-        Assertions.assertEquals("3ProfileImageUrl", updateEmployee.getProfileImageUrl());
+        Assertions.assertNotNull(createdEmployee);
+        Assertions.assertEquals(3, createdEmployee.getVacationHours());
+        Assertions.assertEquals("3LastName", createdEmployee.getLastname());
+        Assertions.assertEquals("3FirstName", createdEmployee.getFirstname());
+        Assertions.assertEquals("3Extension", createdEmployee.getExtension());
+        Assertions.assertEquals("3Email", createdEmployee.getEmail());
+        Assertions.assertEquals("3ProfileImageUrl", createdEmployee.getProfileImageUrl());
 
     }
 

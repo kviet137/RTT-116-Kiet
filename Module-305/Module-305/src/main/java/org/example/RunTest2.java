@@ -8,8 +8,8 @@ public class RunTest2 {
 
         EmployeeDAO employeeDAO = new EmployeeDAO();
 
-        employeeDAO.deleteById(1722);
-        //<---need to update the id
+        employeeDAO.deleteById(1736);
+        employeeDAO.deleteById(1735);//<---need to update the id
     }
 
 }

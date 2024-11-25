@@ -9,7 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "employees")
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -67,6 +66,10 @@ public class Employee {
         this.jobTitle = jobTitle;
         this.vacationHours = vacationHours;
         this.profileImageUrl = profileImageUrl;
+    }
+
+    public  Employee(){
+
     }
 
     public Integer getId() {
