@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Book Haven</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .top-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #343a40;
+        }
+        .top-menu li {
+            margin: 0 15px;
+        }
+        .top-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .top-menu a:hover {
+            text-decoration: underline;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <ul class="top-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <header class="bg-dark text-white text-center py-5">
+        <h1>Get In Touch</h1>
+        <p class="lead">We’re here to help. Reach out to us anytime!</p>
+    </header>
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Contact Form -->
+            <div class="col-md-6">
+                <h2 class="text-primary">Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required pattern="[A-Za-z ]+">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <!-- Contact Information -->
+            <div class="col-md-6">
+                <h2 class="text-primary">Contact Information</h2>
+                <p><strong>Address:</strong> 123 Book Street, Storyville, BK 10101</p>
+                <p><strong>Email:</strong> support@bookhaven.com</p>
+                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                <div class="ratio ratio-16x9 mt-3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.836509223837!2d-122.41941548468114!3d37.774929779759024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064a8247c11%3A0x4c9a27e41f4a1c74!2sBookstore!5e0!3m2!1sen!2sus!4v1699995739616!5m2!1sen!2sus" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Book Haven. All rights reserved.</p>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdel
