@@ -31,10 +31,10 @@ public class Employee {
     private Integer officeId;
 
     @Column(name = "lastname")
-    private String lastname;
+    private String lastName;
 
     @Column(name = "firstname")
-    private String firstname;
+    private String firstName;
 
     @Column(name = "extension")
     private String extension;
@@ -58,8 +58,8 @@ public class Employee {
     public Employee(Integer id, Integer officeId, String lastname, String firstname, String extension, String email, Integer reportsTo, String jobTitle, Integer vacationHours, String profileImageUrl) {
         this.id = id;
         this.officeId = officeId;
-        this.lastname = lastname;
-        this.firstname = firstname;
+        this.lastName = lastname;
+        this.firstName = firstname;
         this.extension = extension;
         this.email = email;
         this.reportsTo = reportsTo;
@@ -88,20 +88,20 @@ public class Employee {
         this.officeId = officeId;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastname) {
+        this.lastName = lastname;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
     public String getExtension() {
