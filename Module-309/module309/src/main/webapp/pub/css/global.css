@@ -14,3 +14,6 @@
     background-color: #737678;
 }
 
+.form_input_error {
+    color:red;
+}
