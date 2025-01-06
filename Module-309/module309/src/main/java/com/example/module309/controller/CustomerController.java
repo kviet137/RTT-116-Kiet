@@ -42,7 +42,7 @@ public class CustomerController {
     public ModelAndView search(@RequestParam(required = false) String firstName) {
 
         ModelAndView response = new ModelAndView("customer/search");
-        int x = 10/0;
+    
 
         response.addObject("search", firstName);
         if (firstName != null) {
