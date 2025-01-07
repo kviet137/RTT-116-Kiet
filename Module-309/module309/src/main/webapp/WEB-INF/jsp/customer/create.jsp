@@ -11,7 +11,7 @@
 </section>
 <section class ="bg-light2 pt-5 pb-5">
     <div class="container">
-    <form action = "/customer/createCustomer">
+    <form action = "/customer/createCustomer" method = "POST" enctype="multipart/form-data">
         <input type = "hidden" name = "id" value = "${form.id}"/>
         <div class="mt-3 row justify-content-center">
             <label for="companyName" class="col-sm-2 col-form-label">Company Name</label>
@@ -145,6 +145,13 @@
                         >${employee.firstName} ${employee.lastName}</option>
                     </c:forEach>
                 </select
+            </div>
+        </div>
+
+        <div class="mt-3 row justify-content-center">
+            <label for="upload" class="col-sm-2 col-form-label">Upload Image</label>
+            <div class="col-sm-10 col-lg-6">
+                <input type="file" class="form-control" id="upload" name="upload">
             </div>
         </div>
 
