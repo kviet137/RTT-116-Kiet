@@ -31,7 +31,7 @@ public class SecurityConfig {
         // this restriction is NOT including authorization it is only for authentication
         http.authorizeRequests()
                 .requestMatchers(
-                        new AntPathRequestMatcher("/customer/**"),
+                       
                         new AntPathRequestMatcher("/employee/**")).authenticated()
                 .anyRequest().permitAll();
 

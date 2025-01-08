@@ -1,5 +1,6 @@
 package com.example.module309.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,6 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode
+
 public class Customer {
 
     // To add a one to many relationship steps
@@ -24,6 +26,7 @@ public class Customer {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sales_rep_employee_id")
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Employee employee;
 
     // now that we have the @ManyToOne mapping using the same column name for the @JoinColumn

@@ -7,6 +7,8 @@ import com.example.module309.database.entity.Customer;
 import com.example.module309.database.entity.Employee;
 import com.example.module309.form.CreateCustomerFormBean;
 import com.example.module309.security.AuthenticatedUserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -16,10 +18,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.nio.file.Files;
@@ -27,7 +26,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 
-//@Slf4j  <---dont need because it using the line 27 as a logger instead
+//@Slf4j  <---dont need because it using the lOG as a logger instead
+//the Logger is used for loggin debug, info, warning, and error
 
 @Controller
 public class CustomerController {
@@ -41,6 +41,26 @@ public class CustomerController {
 
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
+
+    @GetMapping("customer/ajaxExample")
+    public ModelAndView ajaxExample() {
+        ModelAndView response = new ModelAndView("customer/ajaxExample");
+
+        return response;
+    }
+
+    @ResponseBody
+    @GetMapping ("customer/ajaxCall")
+    public String ajaxCall(@RequestParam Integer customerId) throws Exception {
+        Customer customer = customerDAO.findById(customerId);
+
+
+        String json = new ObjectMapper().writeValueAsString(customer);
+        //http://localhost:8080/customer/ajaxCall?customerId=512
+
+        return json;
+
+    }
 
     @GetMapping("/customer/search")
     public ModelAndView search(@RequestParam(required = false) String firstName) {
