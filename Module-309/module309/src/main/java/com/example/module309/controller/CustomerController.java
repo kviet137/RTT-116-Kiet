@@ -123,6 +123,12 @@ public class CustomerController {
 
         response.setViewName("customer/create");
 
+        // manually do some validations here in the controller
+        if ( form.getCountry().startsWith("X") ) {
+            // we are not allowing countries that start with X anymore
+            bindingResult.rejectValue("country", "does not matter", "Country must not begin with X");
+        }
+
         LOG.debug(form.toString());
 
         if (bindingResult.hasErrors()) {
